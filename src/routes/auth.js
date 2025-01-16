@@ -11,7 +11,7 @@ const {
 
 // Register/Signup route
 router.post(
-  '/signup', // Changed from '/register' to '/signup' to match frontend
+  '/signup',
   [
     check('name', 'Name is required')
       .not()
@@ -45,7 +45,7 @@ router.post(
 // Get current user route
 router.get('/me', protect, getMe);
 
-// Password reset request route (optional)
+/* Comment out these optional routes until you implement their handlers
 router.post(
   '/forgot-password',
   [
@@ -54,10 +54,9 @@ router.post(
       .normalizeEmail()
   ],
   validateRequest,
-  // Add your password reset handler here
+  forgotPassword  // You'll need to implement this handler
 );
 
-// Verify email route (optional)
 router.post(
   '/verify-email',
   [
@@ -66,7 +65,8 @@ router.post(
       .isEmpty()
   ],
   validateRequest,
-  // Add your email verification handler here
+  verifyEmail  // You'll need to implement this handler
 );
+*/
 
 module.exports = router;
