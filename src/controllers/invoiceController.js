@@ -4,22 +4,25 @@ const Invoice = require('../models/Invoice');
 // @route   GET /api/invoices
 // @access  Private
 exports.getInvoices = async (req, res) => {
-  try {
-    const invoices = await Invoice.find({ user: req.user.id })
-      .sort({ date: -1 });
-    
-    res.json({
-      success: true,
-      count: invoices.length,
-      data: invoices
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Server Error'
-    });
-  }
-};
+    try {
+      console.log('Fetching invoices for user:', req.user.id);
+      const invoices = await Invoice.find({ user: req.user.id })
+        .sort({ date: -1 });
+      
+      console.log('Found invoices:', invoices.length);
+      
+      res.json({
+        success: true,
+        data: invoices
+      });
+    } catch (error) {
+      console.error('Get invoices error:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Server Error'
+      });
+    }
+  };
 
 // @desc    Get single invoice
 // @route   GET /api/invoices/:id

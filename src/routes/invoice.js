@@ -10,6 +10,8 @@ const {
   updateInvoice,
   deleteInvoice
 } = require('../controllers/invoiceController');
+const Invoice = require('../models/Invoice'); // Add this at the top
+
 
 // Protect all routes
 router.use(protect);

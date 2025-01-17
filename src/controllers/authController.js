@@ -1,5 +1,6 @@
-// src/controllers/AuthController.js
+
 const User = require('../models/User');
+const { generateToken } = require('../utils/helpers'); 
 
 exports.register = async (req, res) => {
   try {
